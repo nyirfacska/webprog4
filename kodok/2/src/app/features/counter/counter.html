@@ -1,0 +1,10 @@
+<div class="panel">
+  <div class="value">
+    {{counter.count()}}
+  </div>
+
+  <div class="controls">
+    <button appHover (click)="counter.increment()"> +1 </button>
+    <button appHover class="secondary" (click)="counter.reset()"> Reset </button>
+  </div>
+</div>
