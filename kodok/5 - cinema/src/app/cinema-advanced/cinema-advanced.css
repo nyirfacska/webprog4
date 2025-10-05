@@ -1,0 +1,89 @@
+.card {
+  width: min(860px, 96%);
+  margin: 1rem auto;
+  background: #fbfbff;
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+  display: grid;
+  gap: 12px;
+}
+h2 { margin: 0; }
+
+fieldset {
+  border: 1px dashed #aab4f5;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+}
+legend {
+  padding: 0 6px;
+  font-weight: 600;
+  color: #3f51b5;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 10px;
+}
+label { display: block; margin: 6px 0; }
+input[type="text"], input[type="email"], input[type="number"], select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+input:focus, select:focus { border-color: #3f51b5; outline: none; }
+
+.seats .legend { margin-bottom: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
+.pill {
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: .85rem;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+}
+.pill.std { border-color: #a8d5a2; }
+.pill.prem { border-color: #ffd27f; }
+.pill.vip { border-color: #ff9fb3; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(50px, 1fr));
+  gap: 6px;
+}
+.grid label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background: #fafafa;
+}
+.grid label.std { box-shadow: inset 0 0 0 2px rgba(80,180,80,.15); }
+.grid label.prem { box-shadow: inset 0 0 0 2px rgba(255,190,60,.18); }
+.grid label.vip { box-shadow: inset 0 0 0 2px rgba(255,60,120,.18); }
+
+.summary {
+  background: #eef1ff;
+  border: 1px solid #d9defa;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+button[type="submit"] {
+  background: #3f51b5;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+button[disabled] { opacity: .6; cursor: not-allowed; }
+
+.err { color: #b00020; font-size: .9rem; }
+.info { color: #665c00; font-size: .9rem; }
+.server { font-weight: 600; }

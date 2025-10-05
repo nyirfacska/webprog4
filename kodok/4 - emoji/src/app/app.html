@@ -1,0 +1,32 @@
+<!-- Szöveg interpoláció -->
+<h1 appHighlight>{{ title }}</h1>
+
+<!-- Kétirányú kötés: keresőmező -->
+<div class="toolbar" appHighlight>
+  <label for="search">Search pet by name:</label>
+  <input id="search" type="text" [(ngModel)]="searchText" placeholder="Type to filter..." />
+
+  <!-- Eseménykötés + tulajdonság/attribútum kötés a gombon -->
+  <button
+    (click)="addCoins(1)"
+    [disabled]="coins >= 20"
+    [attr.aria-label]="'Add coins. Current: ' + coins">
+    +1 coin
+  </button>
+
+  <span class="coins">Your coins: {{ coins }}</span>
+</div>
+
+<!-- Szülő -> Gyerek: @Input-ok; Gyerek -> Szülő: @Output esemény -->
+<div class="grid">
+  <!-- A kommentet az elem ELÉ tesszük, nem a tag belsejébe -->
+  <app-pet-card
+    *ngFor="let p of filteredPets"
+    [name]="p.name"
+    [emoji]="p.emoji"
+    [price]="p.price"
+    [sold]="p.sold"
+    [disabled]="coins < p.price || p.sold"
+    (buy)="onBuyPet($event.name, $event.price)">
+  </app-pet-card>
+</div>

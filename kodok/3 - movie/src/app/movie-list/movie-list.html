@@ -1,0 +1,53 @@
+<section appHoverCard style="padding:12px; border:1px solid #ddd; border-radius:10px;">
+  <h2>🎬 Movie Night Planner</h2>
+
+  <!-- Szűrő: min. rating kétirányú kötéssel -->
+  <label>
+    Min rating:
+    <input type="number" [(ngModel)]="minRating" min="0" max="10" style="width:70px" />
+  </label>
+
+  <!-- Filmek listája (*ngFor) + feltételes megjelenítés (*ngIf) -->
+  <ng-container *ngFor="let m of movies">
+    <li *ngIf="m.rating >= minRating"
+        [ngStyle]="{margin:'8px 0', padding:'8px', border:'1px solid #eee', borderRadius:'8px'}">
+      <strong>{{ m.title }}</strong>
+      <small> — Rating: {{ m.rating }}/10</small>
+      <div>Duration: {{ m.minutes }} min</div>
+      <button (click)="add(m)">Add to Watchlist</button>
+    </li>
+  </ng-container>
+
+  <hr>
+
+  <!-- Watchlist és összidő a pure pipe-pal -->
+  <h3>🍿 Watchlist</h3>
+  <p *ngIf="watchlist.length === 0">Your watchlist is empty.</p>
+
+  <table *ngIf="watchlist.length > 0" style="width:100%; border-collapse:collapse;">
+    <thead>
+    <tr>
+      <th style="text-align:left;">Movie</th>
+      <th style="text-align:right;">Qty</th>
+      <th style="text-align:right;">Minutes</th>
+      <th style="text-align:right;">Subtotal</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let w of watchlist">
+      <td>{{ w.movie.title }}</td>
+      <td style="text-align:right;">{{ w.qty }}</td>
+      <td style="text-align:right;">{{ w.movie.minutes }}</td>
+      <td style="text-align:right;">{{ w.movie.minutes * w.qty }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="watchlist.length > 0" style="text-align:right; margin-top:6px;">
+    Total time: {{ watchlist | totalDuration }}
+  </p>
+
+  <div *ngIf="watchlist.length > 0" style="text-align:right; margin-top:8px;">
+    <button (click)="clear()">Clear Watchlist</button>
+  </div>
+</section>

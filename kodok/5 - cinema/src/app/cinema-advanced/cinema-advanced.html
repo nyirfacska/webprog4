@@ -1,0 +1,117 @@
+<form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>🎬 Cinema Ticket Booking</h2>
+
+  <!-- CUSTOMER -->
+  <fieldset formGroupName="customer">
+    <legend>👤 Customer</legend>
+
+    <label>
+      Name*
+      <input type="text" formControlName="name" placeholder="Your name">
+    </label>
+    <small class="err" *ngIf="form.get('customer.name')?.touched && form.get('customer.name')?.invalid">
+      Name is required (min 2 chars).
+    </small>
+
+    <label>
+      Email*
+      <input type="email" formControlName="email" placeholder="you@example.com">
+    </label>
+    <small class="err" *ngIf="form.get('customer.email')?.touched && form.get('customer.email')?.invalid">
+      Valid email required.
+    </small>
+
+    <!-- Csak Student jegy esetén kötelező (űrlapszintű validator) -->
+    <label>
+      Student ID
+      <input type="text" formControlName="studentId" placeholder="If Student ticket">
+    </label>
+    <small class="err" *ngIf="form.errors?.['studentIdRequired'] && (submitted || form.get('booking.ticketType')?.value === 'student')">
+      Student ticket requires a Student ID.
+    </small>
+  </fieldset>
+
+  <!-- BOOKING -->
+  <fieldset formGroupName="booking">
+    <legend>🎟️ Booking</legend>
+
+    <div class="row">
+      <label>
+        Movie
+        <select formControlName="movie">
+          <option *ngFor="let m of movies" [value]="m">{{ m }}</option>
+        </select>
+      </label>
+
+      <label>
+        Time
+        <select formControlName="time">
+          <option *ngFor="let t of times" [value]="t">{{ t }}</option>
+        </select>
+      </label>
+
+      <label>
+        Ticket type
+        <select formControlName="ticketType">
+          <option value="adult">Adult ({{ prices.ticketBase.adult }} Ft)</option>
+          <option value="student">Student ({{ prices.ticketBase.student }} Ft)</option>
+          <option value="child">Child ({{ prices.ticketBase.child }} Ft)</option>
+        </select>
+      </label>
+
+      <label>
+        Count (1–6)
+        <input type="number" formControlName="count" min="1" max="6">
+      </label>
+    </div>
+
+    <!-- ÜLÉSEK: 3 sor * 8 oszlop – különböző ár-szorzók -->
+    <div class="seats">
+      <div class="legend">
+        <span class="pill std">Standard ×{{ prices.seatMultiplier.standard }}</span>
+        <span class="pill prem">Premium ×{{ prices.seatMultiplier.premium }}</span>
+        <span class="pill vip">VIP ×{{ prices.seatMultiplier.vip }}</span>
+      </div>
+
+      <div formArrayName="seats" class="grid">
+        <!-- idx -> 0..23; r = idx/8; c = idx%8 -->
+        <label *ngFor="let ctrl of seats.controls; let idx = index"
+               [class.std]="seatMap[Math.floor(idx/8)][idx%8].class === 'standard'"
+               [class.prem]="seatMap[Math.floor(idx/8)][idx%8].class === 'premium'"
+               [class.vip]="seatMap[Math.floor(idx/8)][idx%8].class === 'vip'">
+          <input type="checkbox" [formControlName]="idx">
+          {{ seatMap[Math.floor(idx/8)][idx%8].label }}
+        </label>
+      </div>
+
+      <small class="err" *ngIf="form.errors?.['seatCountMismatch'] && (submitted || seats.touched)">
+        The number of selected seats must equal the ticket count.
+      </small>
+    </div>
+  </fieldset>
+
+  <!-- PAYMENT -->
+  <fieldset formGroupName="payment">
+    <legend>💳 Payment</legend>
+    <label>
+      Coupon
+      <input type="text" formControlName="coupon" placeholder="SAVE15 / FLAT1000">
+    </label>
+    <small class="info" *ngIf="form.get('payment.coupon')?.pending">Checking coupon…</small>
+    <small class="err" *ngIf="form.get('payment.coupon')?.touched && form.get('payment.coupon')?.errors?.['invalidCoupon']">
+      Invalid coupon code.
+    </small>
+  </fieldset>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <p>{{ summary }}</p>
+    <h3>Total: {{ totalHuf }} Ft</h3>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Confirm booking</button>
+  <small class="err" *ngIf="submitted && form.invalid">Please fix the errors above.</small>
+
+  <p class="server">{{ serverMsg }}</p>
+</form>
+

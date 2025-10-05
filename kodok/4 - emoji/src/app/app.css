@@ -1,0 +1,11 @@
+h1 { text-align: center; margin: 1rem 0; }
+.toolbar { display: flex; gap: .75rem; align-items: center; justify-content: center; margin-bottom: 1rem; }
+.toolbar input { padding: .4rem .6rem; }
+.toolbar button { padding: .4rem .8rem; cursor: pointer; }
+.coins { font-weight: bold; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .75rem;
+  padding: 0 1rem 1rem;
+}
