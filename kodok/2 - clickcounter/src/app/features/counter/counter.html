@@ -1,0 +1,17 @@
+<!--
+  Képernyő:
+  - Nagy szám a középen (aktuális érték)
+  - Két gomb: +1 és Reset
+  - appHover direktíva a gombokra (vizuális visszajelzés)
+-->
+
+<div class="panel">
+  <div class="value">
+    {{ counter.count() }}
+  </div>
+
+  <div class="controls">
+    <button appHover (click)="counter.increment()">+1</button>
+    <button appHover class="secondary" (click)="counter.reset()">Reset</button>
+  </div>
+</div>

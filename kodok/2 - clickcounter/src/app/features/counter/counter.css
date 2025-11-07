@@ -1,0 +1,32 @@
+.panel {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.value {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+}
+
+.controls {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+button {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #f1f1f1;
+}
