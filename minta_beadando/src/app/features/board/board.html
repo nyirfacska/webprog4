@@ -1,0 +1,95 @@
+<!-- Eszköztár: kereső + betöltés jelző + találatszámláló -->
+<div class="toolbar">
+  <!-- Kereső mező: NEM cast-olunk a template-ben; az eseményt adjuk át a handlernek -->
+  <input
+    type="search"
+    placeholder="Keresés cím szerint…"
+    (input)="onQueryChange($event)"
+  />
+
+  <!-- Egyszerű "loading" jelzés (ha a service épp dolgozik) -->
+  <span *ngIf="loading()">Betöltés…</span>
+
+  <!-- Pipe használat bemutatása: a teljes lista elemszámát szűrjük és kiírjuk -->
+  <small class="muted">
+    Találatok: {{ (all() | titleFilter: query()).length }}
+  </small>
+</div>
+
+<!-- Három oszlop – Todo / In Progress / Done -->
+<div class="board">
+  <!-- TODO oszlop -->
+  <section class="col">
+    <h2>Todo</h2>
+
+    <!-- *ngFor: a todos() computed listán iterálunk (reaktív; query/állapotváltozásra újraszámolódik) -->
+    <div *ngFor="let t of todos()" class="card" [appPriorityBadge]="t.priority">
+      <header>
+        <!-- Egyszerű ID (API-ból vagy lokális ID-ből) -->
+        <strong>#{{ t.id }}</strong>
+
+        <!-- Prioritásválasztó: az eseményt átadjuk, a handler kiolvassa a value-t -->
+        <select [value]="t.priority" (change)="onPriorityChange(t, $event)">
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
+        </select>
+      </header>
+
+      <!-- Feladat címe -->
+      <p>{{ t.title }}</p>
+
+      <!-- Jobbra léptetés gomb: todo → in-progress -->
+      <footer>
+        <button (click)="moveRight(t)">▶</button>
+      </footer>
+    </div>
+  </section>
+
+  <!-- IN PROGRESS oszlop -->
+  <section class="col">
+    <h2>In Progress</h2>
+
+    <div *ngFor="let t of doing()" class="card" [appPriorityBadge]="t.priority">
+      <header>
+        <strong>#{{ t.id }}</strong>
+        <select [value]="t.priority" (change)="onPriorityChange(t, $event)">
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
+        </select>
+      </header>
+
+      <p>{{ t.title }}</p>
+
+      <!-- Balra és jobbra léptetés gombok -->
+      <footer>
+        <button (click)="moveLeft(t)">◀</button>
+        <button (click)="moveRight(t)">▶</button>
+      </footer>
+    </div>
+  </section>
+
+  <!-- DONE oszlop -->
+  <section class="col">
+    <h2>Done</h2>
+
+    <div *ngFor="let t of done()" class="card" [appPriorityBadge]="t.priority">
+      <header>
+        <strong>#{{ t.id }}</strong>
+        <select [value]="t.priority" (change)="onPriorityChange(t, $event)">
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
+        </select>
+      </header>
+
+      <p>{{ t.title }}</p>
+
+      <!-- Balra léptetés gomb: done → in-progress -->
+      <footer>
+        <button (click)="moveLeft(t)">◀</button>
+      </footer>
+    </div>
+  </section>
+</div>

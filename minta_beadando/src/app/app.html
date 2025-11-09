@@ -1,0 +1,15 @@
+<!-- Nagy cím a lap tetején -->
+<h1>Todo List</h1>
+
+<!-- Rövid leírás (mi történik első betöltéskor, hogyan rendeződnek az elemek) -->
+<p class="muted">
+  Első indításkor 10 feladat töltődik be az API-ból (JSONPlaceholder /todos).
+  A kész elemek a „Done” oszlopba kerülnek, a többiek „Todo”-ba.
+  Helyben hozzáadhatsz új feladatot, állíthatsz prioritást és mozgathatod a státuszt.
+</p>
+
+<!-- Új feladat felvitele (kétirányú kötés ngModel-lel) -->
+<app-task-form></app-task-form>
+
+<!-- Háromoszlopos kanban tábla (Todo / In Progress / Done) -->
+<app-board></app-board>

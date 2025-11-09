@@ -1,0 +1,20 @@
+/* Globális háttér és fő betűcsalád */
+body {
+  background: #fff0f6; /* halvány rózsaszín háttér */
+  font-family: "Poppins", "Segoe UI", sans-serif; /* a betöltött Google font */
+  color: #444; /* alapszöveg színe, jó kontraszt */
+}
+
+/* Fő cím pink árnyalattal és apró fehér árnyékkal */
+h1 {
+  color: #d63384;
+  margin: 0 0 0.25rem;
+  text-shadow: 1px 1px 0 #fff; /* finom kiemelés */
+}
+
+/* Leíró, halványabb szöveg */
+.muted {
+  color: #b96fa3;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}

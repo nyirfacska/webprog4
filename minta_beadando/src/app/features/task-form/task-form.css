@@ -1,0 +1,46 @@
+/* Rózsaszín kártya doboz az űrlapnak */
+.form {
+  background: #ffe4ec;                 /* halvány rózsaszín */
+  border: 2px solid #f8a5c2;           /* pinkes keret */
+  border-radius: 14px;
+  padding: 1rem;
+  display: grid;
+  gap: .85rem;                         /* mezők közötti távolság */
+  margin-bottom: 1.5rem;               /* külön a táblától */
+  box-shadow: 0 4px 10px rgba(255, 170, 200, 0.4); /* finom árnyék */
+}
+
+label {
+  display: grid;
+  gap: .25rem;
+  font-weight: 500;
+  color: #c2185b;                      /* címke színe */
+}
+
+input, select {
+  padding: .6rem;
+  border: 1.5px solid #f48fb1;         /* pink keret */
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.2s ease;           /* smooth fókusz átmenet */
+}
+input:focus, select:focus {
+  outline: none;                       /* natív kéket elvesszük */
+  border-color: #ec407a;               /* erősebb pink fókuszban */
+  box-shadow: 0 0 5px #f06292;         /* pici fény */
+}
+
+.btn {
+  background: linear-gradient(90deg, #ec407a, #f48fb1); /* pink gradiens */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: .6rem .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(236, 64, 122, 0.4);
+}

@@ -1,0 +1,31 @@
+<!-- A (ngSubmit) az űrlap submit eseményére köt (Enter/gomb-kattintás) -->
+<form (ngSubmit)="submit()" class="form">
+  <!-- Cím mező: [(ngModel)] – kétirányú kötés; name kötelező ngModel-hez -->
+  <label>
+    Cím
+    <input [(ngModel)]="title" name="title" required />
+  </label>
+
+  <!-- Prioritás választó: low/medium/high -->
+  <label>
+    Prioritás
+    <select [(ngModel)]="priority" name="priority">
+      <option value="low">low</option>
+      <option value="medium">medium</option>
+      <option value="high">high</option>
+    </select>
+  </label>
+
+  <!-- Státusz választó: azonnal a megfelelő oszlopba kerüljenek az új elemek -->
+  <label>
+    Státusz
+    <select [(ngModel)]="status" name="status">
+      <option value="todo">todo</option>
+      <option value="in-progress">in-progress</option>
+      <option value="done">done</option>
+    </select>
+  </label>
+
+  <!-- Küldés gomb: saving alatt tiltva -->
+  <button class="btn" type="submit" [disabled]="saving">Hozzáadás</button>
+</form>

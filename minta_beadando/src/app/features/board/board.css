@@ -1,0 +1,93 @@
+/* Eszköztár sáv: input és infók egy sorban */
+.toolbar {
+  display: flex;             /* vízszintesen egymás mellé */
+  gap: .75rem;               /* közök az elemek között */
+  align-items: center;       /* függőleges középre igazítás */
+  margin: .75rem 0 1.25rem;  /* külső margó */
+}
+
+.muted { color: #b96fa3; }   /* halvány rózsaszín szöveg */
+
+input[type="search"] {
+  padding: .6rem .8rem;      /* belső térköz */
+  border-radius: 10px;       /* lekerekített sarkok */
+  border: 2px solid #f48fb1; /* pink keret */
+  flex: 1;                   /* foglalja ki a maradék helyet */
+  background: #fff;          /* fehér háttér az olvashatóságért */
+  transition: border-color 0.2s ease;
+}
+input[type="search"]:focus {
+  border-color: #ec407a;     /* fókuszban erősebb pink */
+  outline: none;             /* natív kék outline eltüntetése */
+}
+
+/* 3 oszlopos rács */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 egyenlő szélességű oszlop */
+  gap: 1.25rem;                           /* oszlopok közti hézag */
+}
+
+/* Oszlop cím stílus */
+.col h2 {
+  margin: 0 0 .5rem;
+  color: #c2185b;
+  text-align: center;
+  font-weight: 600;
+  background: #f8bbd0;
+  border-radius: 8px;
+  padding: .3rem 0;
+}
+
+/* Kártya alapstílus – finom árnyék, hover animáció */
+.card {
+  border-radius: 16px;
+  padding: .75rem;
+  display: grid;
+  gap: .5rem;
+  box-shadow: 0 4px 10px rgba(240, 98, 146, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(240, 98, 146, 0.4);
+}
+
+/* Kártya fejléc (ID + prioritás select) */
+.card header {
+  display: flex;
+  justify-content: space-between; /* ID balra, select jobbra */
+  align-items: center;
+}
+.card header strong {
+  color: #ad1457; /* ID kiemelése */
+}
+.card select {
+  border: 1.5px solid #f48fb1;
+  border-radius: 6px;
+  background: #fff0f6;      /* halvány rózsaszín */
+  padding: .3rem .5rem;
+  color: #c2185b;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Kártya lábléc (gombok) */
+.card footer {
+  display: flex;
+  gap: .5rem;
+  justify-content: flex-end; /* gombok jobbra */
+}
+.card button {
+  border: none;
+  background: #f06292;  /* pink gomb */
+  color: #fff;
+  padding: .4rem .6rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.card button:hover {
+  background: #ec407a;  /* hover: erősebb pink */
+  box-shadow: 0 2px 6px rgba(236, 64, 122, 0.3);
+}
