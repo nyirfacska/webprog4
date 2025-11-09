@@ -1,0 +1,6 @@
+﻿IssueID;Summary;Severity;Priority;Status;Component;Environment;Preconditions;Steps;Expected;Actual;Assignee;Created
+BUG-001;API hiba első indításkor (nincs internet);Medium;High;Open;TasksService;Win11/Chrome 120;Első indítás localStorage nélkül;1) Kapcsold ki a netet 2) Nyisd meg az oldalt;Üres lista + barátságos hibaüzenet;Üres lista van, de nincs UI értesítés;Unassigned;2025.11.09
+BUG-002;Kereső mező whitespace kezelése;Low;Medium;Resolved;BoardComponent;macOS/Firefox 120;N/A;1) Írj be szóközöket 2) Ellenőrizd a találatszámot;Whitespace ne szűrjön;Trim már megoldja (nincs hiba);Dev Team;2025.11.09
+BUG-003;Prioritás select gyors kattintásnál duplikált reload;Low;Low;Open;Board/Service;Win10/Edge 120;N/A;1) Gyorsan változtasd a selectet 2) Figyeld a logot;Egy reload elegendő;Kettős reload észlelhető logban;Unassigned;2025.11.09
+BUG-004;Üres cím mentése – validáció egységesítése;High;High;Open;TaskForm;Ubuntu/Chrome;Lokális build;1) Hagyd üresen a címet 2) Mentés;Mentés ne történjen meg;Figyelmeztetés van, de unit teszt hiányzik;Unassigned;2025.11.09
+BUG-005;localStorage kulcsütközés több böngészőfülnél;Medium;Medium;Open;TasksService;Win11/Chrome 120;Két fül egyszerre nyitva;1) Nyisd meg két fülön 2) Adj hozzá mindkét fülön;Konzisztens állapot;Versenyhelyzetben utolsó mentés nyer;Unassigned;2025.11.09
