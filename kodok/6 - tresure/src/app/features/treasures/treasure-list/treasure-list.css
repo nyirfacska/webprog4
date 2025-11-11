@@ -1,0 +1,10 @@
+/* ============================================================
+FÁJL: src/app/features/treasures/treasure-list/treasure-list.css
+MIT CSINÁL:
+- Egyszerű lista megjelenítés.
+============================================================ */
+:host{ display:block; padding:12px; }       /* külső térköz */
+ul{ list-style:none; padding:0; margin:10px 0; } /* alap lista stílus levétele */
+li{ margin:6px 0; }                          /* sorok közti tér */
+a{ text-decoration:none; color:#333; }       /* link stílus */
+a:hover{ text-decoration:underline; }        /* hover kiemelés */

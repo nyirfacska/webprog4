@@ -1,0 +1,7 @@
+/* ============================================================
+FÁJL: src/app/features/treasures/treasure-detail/treasure-detail.css
+MIT CSINÁL:
+- Egyszerű kártya stílus középre igazítva.
+============================================================ */
+:host{ display:block; padding:12px; } /* külső térköz */
+.card{ border:1px solid #e5e7eb; border-radius:6px; padding:12px; max-width:420px; margin:20px auto; text-align:center; background:#fff; } /* kártya */

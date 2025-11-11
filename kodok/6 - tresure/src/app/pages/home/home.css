@@ -1,0 +1,6 @@
+/* ============================================================
+FÁJL: src/app/pages/home/home.css
+MIT CSINÁL:
+- Egyszerű térköz az olvashatóságért.
+============================================================ */
+:host{ display:block; padding:12px; } /* komponens gyökér margója */

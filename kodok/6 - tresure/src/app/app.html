@@ -1,0 +1,18 @@
+<!-- ============================================================
+FÁJL: src/app/app.html
+MIT CSINÁL:
+- Egyszerű navbar (Home / Treasures) + jobb oldalt kulcsváltó gomb.
+- Alatta <router-outlet>: az aktuális oldal tartalma.
+============================================================ -->
+<nav class="nav"> <!-- felső sáv konténer -->
+  <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a> <!-- nyílt -->
+  <a routerLink="/treasures" routerLinkActive="active">Treasures</a> <!-- védett -->
+
+  <span class="spacer"></span> <!-- a gombot jobbra tolja -->
+
+  <button (click)="toggleKey()"> <!-- kattintás → állapot váltás -->
+    {{ (hasKey$ | async) ? 'Drop Key' : 'Pick Up Key' }} <!-- dinamikus felirat -->
+  </button>
+</nav>
+
+<router-outlet></router-outlet> <!-- ide renderel a router -->

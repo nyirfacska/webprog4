@@ -1,0 +1,19 @@
+<!-- ============================================================
+FÁJL: src/index.html
+MIT CSINÁL:
+- Belépési pont a böngészőnek.
+- Az Angular az <app-root> elembe rendereli a gyökeret.
+- A <base href="/"> szükséges a Routerhez (SPA útvonalak).
+============================================================ -->
+<!doctype html>                           <!-- HTML5 doctype -->
+<html lang="en">                          <!-- dokumentum nyelve -->
+<head>                                    <!-- <head> meta és beállítások -->
+  <meta charset="utf-8">                  <!-- UTF-8 -->
+  <title>Treasure Router</title>          <!-- böngészőfül cím -->
+  <base href="/">                          <!-- SPA bázisútvonal -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>                                     <!-- dokumentum törzs -->
+<app-root></app-root>                    <!-- ide renderel az Angular -->
+</body>
+</html>

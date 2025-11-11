@@ -1,0 +1,12 @@
+<!-- ============================================================
+FÁJL: src/app/features/treasures/treasure-list/treasure-list.html
+MIT CSINÁL:
+- Kincsek listája → kattintható linkek a részlet oldalra.
+- Hover effekt + emoji díszítés.
+============================================================ -->
+<h2>💎 Treasures</h2>
+<ul>
+  <li *ngFor="let t of treasures">
+    <a [routerLink]="[t.id]" appShine>{{ t.name | treasureLabel }}</a>
+  </li>
+</ul>
