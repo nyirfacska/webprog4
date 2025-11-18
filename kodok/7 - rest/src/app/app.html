@@ -1,0 +1,19 @@
+<!--
+  Ez az AppComponent sablonja.
+  Itt általában:
+    - egy fejlécet
+    - menüt / navigációt
+    - és a <router-outlet>-et tartjuk.
+-->
+
+<!-- Egyszerű fejléc a cím változóval -->
+<h1>{{ title }}</h1>
+
+<hr>
+
+<!--
+  A router-outlet egy helyfoglaló:
+  ide tölti be az Angular az aktuális route-hoz tartozó komponenst,
+  pl. a /users útvonalnál a UsersComponent-et.
+-->
+<router-outlet></router-outlet>

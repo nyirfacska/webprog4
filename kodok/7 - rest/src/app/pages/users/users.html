@@ -1,0 +1,9 @@
+<h2>Users</h2>
+<div *ngIf="users.length === 0">
+   Loading...
+</div>
+<ul>
+  <li *ngFor="let u of users">
+        {{u.firstName}} {{u.lastName}} -  {{u.email}}
+  </li>
+</ul>
