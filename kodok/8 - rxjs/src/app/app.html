@@ -1,0 +1,13 @@
+<div style="max-width: 400px; margin: 2rem auto; text-align: center">
+  <h1>RxJS BehaviorSubject Timer</h1>
+
+  <!-- async pipe: feliratkozik az Observable-re és kiírja az aktuális értéket -->
+  <p>
+    El telt másodpercek:
+    <strong>{{ counter$ | async }}</strong>
+  </p>
+
+  <button (click)="start()">Start</button>
+  <button (click)="stop()">Stop</button>
+  <button (click)="reset()">Reset</button>
+</div>
